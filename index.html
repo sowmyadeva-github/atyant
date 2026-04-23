@@ -1,0 +1,439 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Atyant — Decision Clarity Engine</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <canvas id="bgCanvas"></canvas>
+
+  <div class="page-shell">
+    <header class="hero">
+      <nav class="topbar">
+        <div class="logo">
+          <span class="logo-mark">🎓</span>
+          <span class="logo-text">Atyant</span>
+        </div>
+        <a href="#" class="nav-cta btn-whatsapp-direct">Get Clarity</a>
+      </nav>
+
+      <div class="hero-content container">
+        <div class="hero-text">
+          <span class="eyebrow">🎯 Decision clarity for 12th students</span>
+          <h1>Stop Guessing. Your next 4 years depend on this 1 week.</h1>
+          <p>
+            Confused between college vs branch? Don’t let a costly wrong decision
+            become your first adult mistake.
+          </p>
+
+          <div class="hero-actions">
+            <a href="#" class="btn btn-primary btn-whatsapp-direct">Get Clarity on WhatsApp</a>
+            <a href="#pricing" class="btn btn-secondary glow-soft">See Plans</a>
+          </div>
+
+          <div class="trust-line">
+            ✨ Trusted by 5,000+ students
+          </div>
+        </div>
+
+        <div class="hero-card glass-card">
+          <div class="hero-card-badge">🧠 Smart matching</div>
+          <h3>Your decision should match:</h3>
+          <ul>
+            <li>Your rank</li>
+            <li>Your branch interest</li>
+            <li>Your budget</li>
+            <li>Your state preference</li>
+            <li>Your long-term goal</li>
+          </ul>
+          <div class="hero-mini-cta">📌 Clarity before commitment</div>
+        </div>
+      </div>
+    </header>
+
+    <main>
+      <section class="segment-section container">
+        <div class="section-heading center">
+          <span class="section-tag">🧭 Start here</span>
+          <h2>What best describes you right now?</h2>
+          <p>Select one. We’ll personalize your experience instantly.</p>
+        </div>
+
+        <div class="segment-grid" id="segmentGrid">
+          <button class="segment-card active glow-soft" data-segment="I know my rank">📊 I know my rank</button>
+          <button class="segment-card glow-soft" data-segment="I’m waiting for results">⏳ I’m waiting for results</button>
+          <button class="segment-card glow-soft" data-segment="I’m confused about branch">🧩 I’m confused about branch</button>
+          <button class="segment-card glow-soft" data-segment="I’m confused about college">🏛️ I’m confused about college</button>
+          <button class="segment-card glow-soft" data-segment="I want to talk to a senior">🎓 I want to talk to a senior</button>
+        </div>
+      </section>
+
+      <section class="problem-section">
+        <div class="container">
+          <div class="section-heading center">
+            <span class="section-tag danger">⚠️ Why students feel stuck</span>
+            <h2>Too much advice. Too little clarity.</h2>
+          </div>
+
+          <div class="problem-grid">
+            <div class="problem-card glass-card">
+              <h3>📺 YouTube says one thing</h3>
+              <p>Every video gives different advice. Most of it is not based on your rank or your reality.</p>
+            </div>
+            <div class="problem-card glass-card">
+              <h3>👨‍👩‍👧 Relatives confuse you more</h3>
+              <p>Someone else’s old college story may not fit today’s placements, branches, or your goals.</p>
+            </div>
+            <div class="problem-card glass-card">
+              <h3>⚖️ College vs Branch is stressful</h3>
+              <p>Brand name, fees, branch interest, location, placements — everything feels important at once.</p>
+            </div>
+            <div class="problem-card glass-card">
+              <h3>⏰ Wrong choice can cost years</h3>
+              <p>A rushed decision can lead to regret, mismatch, and lost confidence in the second year itself.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="form-section container" id="decision-form">
+        <div class="section-heading">
+          <span class="section-tag">📝 Personalized clarity form</span>
+          <h2>Tell us about yourself</h2>
+          <p>Fill this short form and get a recommendation preview built around your interests and confusion.</p>
+        </div>
+
+        <div class="form-layout">
+          <div class="form-panel glass-card">
+            <div class="progress-wrap">
+              <div class="progress-label">
+                <span>Progress</span>
+                <span id="progressText">Step 1 of 5</span>
+              </div>
+              <div class="progress-bar">
+                <div class="progress-fill" id="progressFill"></div>
+              </div>
+            </div>
+
+            <form id="multiStepForm">
+              <div class="form-step active" data-step="1">
+                <h3>👤 Basic details</h3>
+                <div class="field-grid">
+                  <div class="field">
+                    <label for="fullName">Full Name</label>
+                    <input type="text" id="fullName" name="fullName" placeholder="Enter your name" required />
+                  </div>
+                  <div class="field">
+                    <label for="whatsapp">WhatsApp Number</label>
+                    <input type="tel" id="whatsapp" name="whatsapp" placeholder="Enter WhatsApp number" required />
+                  </div>
+                </div>
+              </div>
+
+              <div class="form-step" data-step="2">
+                <h3>📘 Academic details</h3>
+                <div class="field-grid">
+                  <div class="field">
+                    <label for="examType">Exam Type</label>
+                    <select id="examType" name="examType" required>
+                      <option value="">Select</option>
+                      <option>JEE</option>
+                      <option>NEET</option>
+                      <option>Commerce</option>
+                    </select>
+                  </div>
+                  <div class="field">
+                    <label for="rank">Rank / Percentile</label>
+                    <input type="text" id="rank" name="rank" placeholder="Ex: 85000 or 92%" required />
+                  </div>
+                  <div class="field field-full">
+                    <label for="state">Preferred State / Location</label>
+                    <input type="text" id="state" name="state" placeholder="Ex: Telangana" required />
+                  </div>
+                </div>
+              </div>
+
+              <div class="form-step" data-step="3">
+                <h3>💡 Interest area</h3>
+                <div class="field-grid">
+                  <div class="field field-full">
+                    <label for="domain">Interested Domain / Branch</label>
+                    <select id="domain" name="domain" required>
+                      <option value="">Select</option>
+                      <option>CSE / AI & Data Science</option>
+                      <option>ECE / Electrical</option>
+                      <option>Mechanical / Civil</option>
+                      <option>Medical / NEET</option>
+                      <option>Commerce / Management</option>
+                      <option>Still Exploring / Not Sure</option>
+                    </select>
+                  </div>
+                </div>
+              </div>
+
+              <div class="form-step" data-step="4">
+                <h3>❓ Your main confusion</h3>
+                <div class="field-grid">
+                  <div class="field field-full">
+                    <label for="confusion">What are you confused about?</label>
+                    <select id="confusion" name="confusion" required>
+                      <option value="">Select</option>
+                      <option>College vs Branch</option>
+                      <option>Private vs Government</option>
+                      <option>CSE vs ECE</option>
+                      <option>Local college vs far college</option>
+                      <option>Low fees vs better placement</option>
+                      <option>I don’t know what to choose</option>
+                    </select>
+                  </div>
+                </div>
+              </div>
+
+              <div class="form-step" data-step="5">
+                <h3>🚀 Your top priority</h3>
+                <div class="field-grid">
+                  <div class="field field-full">
+                    <label for="priority">Career Priority</label>
+                    <select id="priority" name="priority" required>
+                      <option value="">Select</option>
+                      <option>Placements</option>
+                      <option>Branch Interest</option>
+                      <option>Fees / Affordability</option>
+                      <option>College Brand</option>
+                      <option>Near Home</option>
+                      <option>Higher Studies</option>
+                    </select>
+                  </div>
+                </div>
+              </div>
+
+              <div class="form-actions">
+                <button type="button" class="btn btn-secondary glow-soft hidden" id="prevBtn">Back</button>
+                <button type="button" class="btn btn-primary" id="nextBtn">Next</button>
+                <button type="submit" class="btn btn-primary hidden" id="submitBtn">Get My Recommendation</button>
+              </div>
+            </form>
+          </div>
+
+          <aside class="preview-panel">
+            <div class="preview-card glass-card">
+              <span class="section-tag">🔍 Personalized preview</span>
+              <h3 id="previewTitle">Your clarity preview will appear here</h3>
+              <p id="previewText">
+                Fill the form to see branch fit, senior match, risk note, lead score, and your recommended next step.
+              </p>
+              <div class="preview-points" id="previewPoints">
+                <div class="preview-pill">Best college range</div>
+                <div class="preview-pill">Best branch fit</div>
+                <div class="preview-pill">Risk warning</div>
+                <div class="preview-pill">Suggested next step</div>
+              </div>
+            </div>
+          </aside>
+        </div>
+      </section>
+
+      <section class="result-section container hidden" id="resultSection">
+        <div class="section-heading">
+          <span class="section-tag success">✅ Your recommendation</span>
+          <h2>Based on your profile, here’s what you should focus on first</h2>
+        </div>
+
+        <div class="result-grid">
+          <div class="result-card glass-card">
+            <h3>🏛️ Best College Range</h3>
+            <p id="bestCollegeRange">—</p>
+          </div>
+          <div class="result-card glass-card">
+            <h3>🎯 Best Branch Fit</h3>
+            <p id="bestBranchFit">—</p>
+          </div>
+          <div class="result-card glass-card">
+            <h3>⚠️ Risk Warning</h3>
+            <p id="riskWarning">—</p>
+          </div>
+          <div class="result-card glass-card">
+            <h3>📌 Suggested Next Step</h3>
+            <p id="suggestedNextStep">—</p>
+          </div>
+          <div class="result-card glass-card">
+            <h3>📈 Lead Score</h3>
+            <p id="leadScore">—</p>
+          </div>
+          <div class="result-card glass-card">
+            <h3>💼 Recommended Product</h3>
+            <p id="recommendedProduct">—</p>
+          </div>
+        </div>
+
+        <div class="match-card glass-card">
+          <h3>🎓 Best Senior Match for You</h3>
+          <p id="seniorMatch">—</p>
+        </div>
+
+        <div class="whatsapp-box glass-card">
+          <h3>💬 Continue on WhatsApp</h3>
+          <p id="whatsappPreview"></p>
+          <a href="#" target="_blank" id="whatsappBtn" class="btn btn-whatsapp">Send on WhatsApp</a>
+        </div>
+      </section>
+
+      <section class="solution-section container">
+        <div class="section-heading center">
+          <span class="section-tag">⚙️ How Atyant works</span>
+          <h2>The Atyant Decision Clarity System</h2>
+        </div>
+
+        <div class="timeline-grid">
+          <div class="timeline-card glass-card">
+            <div class="timeline-number">1</div>
+            <h3>🎯 Match</h3>
+            <p>We match you with a senior close to your rank range, interest, and confusion type.</p>
+          </div>
+          <div class="timeline-card glass-card">
+            <div class="timeline-number">2</div>
+            <h3>🧾 Audit</h3>
+            <p>Your rank, priorities, state, branch preference, and risk factors are reviewed.</p>
+          </div>
+          <div class="timeline-card glass-card">
+            <div class="timeline-number">3</div>
+            <h3>✅ Decide</h3>
+            <p>You get a final direction with better college options, better branch fit, and less regret.</p>
+          </div>
+        </div>
+      </section>
+
+      <section class="quiz-section container">
+        <div class="section-heading center">
+          <span class="section-tag">🧠 Quick decision quiz</span>
+          <h2>What matters most to you?</h2>
+          <p>Pick one and see your decision style.</p>
+        </div>
+
+        <div class="quiz-grid" id="quizGrid">
+          <button class="quiz-card glow-soft" data-result="Placement-first decision maker">📈 Placements</button>
+          <button class="quiz-card glow-soft" data-result="Branch-first decision maker">🎯 Branch interest</button>
+          <button class="quiz-card glow-soft" data-result="Budget-focused decision maker">💰 Fees</button>
+          <button class="quiz-card glow-soft" data-result="Brand-focused decision maker">🏛️ College brand</button>
+          <button class="quiz-card glow-soft" data-result="Comfort-first decision maker">🏠 Near home</button>
+          <button class="quiz-card glow-soft" data-result="Future-focused decision maker">🌍 Higher studies</button>
+        </div>
+
+        <div class="quiz-result glass-card" id="quizResult">
+          Your decision style will appear here.
+        </div>
+      </section>
+
+      <section class="testimonial-section container">
+        <div class="section-heading center">
+          <span class="section-tag">🌟 Student trust</span>
+          <h2>Stories that feel relevant to you</h2>
+          <p>Your testimonials will update based on your selected stream and domain.</p>
+        </div>
+
+        <div class="testimonial-card glass-card" id="testimonialCard">
+          <p class="testimonial-text">
+            “I was confused between a bigger college name and a better branch. Atyant helped me think clearly.”
+          </p>
+          <div class="testimonial-meta">— Student Story</div>
+        </div>
+      </section>
+
+      <section class="trust-section container">
+        <div class="section-heading center">
+          <span class="section-tag">🤝 Parent reassurance</span>
+          <h2>Built for confidence, not false promises</h2>
+        </div>
+
+        <div class="trust-grid">
+          <div class="trust-card glass-card">📘 Real student outcomes</div>
+          <div class="trust-card glass-card">💰 Budget-aware guidance</div>
+          <div class="trust-card glass-card">🎯 Better branch-fit decisions</div>
+          <div class="trust-card glass-card">🛡️ No overpromising</div>
+          <div class="trust-card glass-card">🎓 Guidance from real seniors</div>
+          <div class="trust-card glass-card">👨‍👩‍👧 Support for family decision-making</div>
+        </div>
+      </section>
+
+      <section class="pricing-section container" id="pricing">
+        <div class="section-heading center">
+          <span class="section-tag">💼 Simple plans</span>
+          <h2>Choose the level of clarity you need</h2>
+        </div>
+
+        <div class="pricing-grid">
+          <div class="price-card glass-card">
+            <h3>Better College</h3>
+            <div class="price">₹149</div>
+            <ul>
+              <li>Best colleges based on your profile</li>
+              <li>Quick shortlist</li>
+              <li>WhatsApp support</li>
+            </ul>
+            <a href="#" class="btn btn-secondary full btn-offer-whatsapp glow-soft" data-plan="Better College" data-price="₹149">Get My College List</a>
+          </div>
+
+          <div class="price-card glass-card">
+            <h3>Better Branch</h3>
+            <div class="price">₹149</div>
+            <ul>
+              <li>Branch-fit clarity</li>
+              <li>Risk-based guidance</li>
+              <li>Personalized next step</li>
+            </ul>
+            <a href="#" class="btn btn-secondary full btn-offer-whatsapp glow-soft" data-plan="Better Branch" data-price="₹149">Get My Branch Fit</a>
+          </div>
+
+          <div class="price-card featured glass-card">
+            <div class="popular-badge">🔥 Most Popular</div>
+            <h3>Decision Bundle</h3>
+            <div class="price">₹249</div>
+            <ul>
+              <li>College + branch clarity</li>
+              <li>1:1 senior connection</li>
+              <li>Better final decision support</li>
+            </ul>
+            <a href="#" class="btn btn-primary full btn-offer-whatsapp" data-plan="Decision Bundle" data-price="₹249">Claim My Bundle</a>
+          </div>
+
+          <div class="price-card glass-card">
+            <h3>Premium 1:1</h3>
+            <div class="price">₹999</div>
+            <ul>
+              <li>Priority support</li>
+              <li>Personalized guidance</li>
+              <li>Direct high-touch help</li>
+            </ul>
+            <a href="#" class="btn btn-secondary full btn-offer-whatsapp glow-soft" data-plan="Premium 1:1" data-price="₹999">Go Premium</a>
+          </div>
+        </div>
+      </section>
+
+      <section class="community-section container">
+        <div class="community-box glass-card">
+          <div>
+            <span class="section-tag">🌐 Community</span>
+            <h2>Join the clarity circle</h2>
+            <p>
+              Join WhatsApp, get a free decision guide, and invite friends for rewards.
+            </p>
+          </div>
+          <div class="community-actions">
+            <a href="#" class="btn btn-primary btn-whatsapp-direct">Talk to a Senior</a>
+            <a href="#" class="btn btn-secondary btn-whatsapp-direct glow-soft">Get Free Guide</a>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <a href="#" class="sticky-cta btn-whatsapp-direct">Get Clarity</a>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
